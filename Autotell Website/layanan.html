@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan & Portofolio - Autotel Cipta Solusi</title>
+    
+    <!-- ======================= SEMUA CSS DITEMPEL DI SINI ======================= -->
+    <style>
+        /* Pengaturan Global & Variable Warna */
+        :root {
+            --primary-color: #0D47A1;
+            --secondary-color: #1976D2;
+            --dark-grey: #333333;
+            --light-grey: #f8f9fa;
+            --white-color: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background-color: var(--white-color);
+        }
+
+        /* Header (Sama seperti Beranda) */
+        header {
+            background: var(--white-color);
+            padding: 1rem 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        nav .logo a { color: var(--primary-color); font-size: 1.5rem; font-weight: bold; text-decoration: none; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 2rem; }
+        nav ul li a { text-decoration: none; color: var(--dark-grey); font-weight: 600; transition: color 0.3s ease; }
+        nav ul li a:hover { color: var(--primary-color); }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        .page-header h1 { font-size: 2.8rem; }
+
+        /* ======================= CSS UNTUK LAYOUT SOLUSI ======================= */
+        .solution-container {
+            display: flex;
+            gap: 2rem;
+            padding: 3rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Kolom Kiri: Navigasi */
+        .solution-nav {
+            flex: 0 0 300px;
+            background-color: var(--light-grey);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .nav-group {
+            margin-bottom: 2rem;
+        }
+        .nav-group h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--dark-grey);
+            font-weight: 600;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            background-color: #e9ecef;
+        }
+        .nav-item.active {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+        .client-logo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+         .client-card {
+            background: var(--white-color);
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease; 
+        }
+        .client-card img {
+            width: 100%;
+            max-height: 50px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        .client-card:hover img { filter: grayscale(0%); opacity: 1; }   
+        .client-card.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.2);
+        }
+        .client-card.active img { filter: grayscale(0%); opacity: 1; }
+
+        /* Kolom Kanan: Detail Konten */
+        .solution-detail {
+            flex: 1;
+        }
+        .content-panel {
+            display: none;
+        }
+        .content-panel.active {
+            display: block;
+        }
+        .content-panel h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .project-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .content-panel h4 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+        .content-panel p, .content-panel ul {
+            text-align: left;
+            color: #555;
+        }
+        .content-panel ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-grey);
+            padding: 3rem 5%;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 5rem;
+        }
+        .footer-content { display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 1.5rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; }
+        .footer-links a, .footer-copyright p { text-decoration: none; color: #555; font-weight: 600; font-size: 0.9rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--primary-color); } 
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .solution-container {
+                flex-direction: column;
+            }
+            .solution-nav {
+                flex: 0 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigasi -->
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html"><b>AUTOTEL</b></a></div>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                <li><a href="layanan.html">Layanan</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <!-- <li><a href="kontak.html">Kontak</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="page-header">
+            <h1>Layanan & Portofolio</h1>
+        </div>
+
+        <div class="solution-container">
+            <!-- KOLOM KIRI: NAVIGASI -->
+            <aside class="solution-nav">
+                <div class="nav-group">
+                    <h3>Layanan Kami</h3>
+                    <a href="#" class="nav-item active" data-target="otomatisasi">Automation Enginering</a>
+                    <a href="#" class="nav-item" data-target="desain">Electrical Mechanical</a>
+                    <a href="#" class="nav-item" data-target="integrasi">Building or Modifed Machine</a>
+                </div>
+                 <div class="nav-group">
+                    <h3>Portofolio Klien</h3>
+                    <div class="client-logo-grid">
+                        <div class="client-card" data-target="toyota"><img src="Logo/WJ24JG5LX4US27ZN4W4VHEY3TN35NHPG5R7ZT8ZN-5db2a5f8.png" alt="Logo Toyota"></div>
+                        <div class="client-card" data-target="yuasa"><img src="Logo/pt yuasa polos.png" alt="Logo Yuasa"></div>
+                        <div class="client-card" data-target="mulia"><img src="Logo/logo-new.png" alt="Logo Mulia Ceramics"></div>
+                        <div class="client-card" data-target="sanrise"><img src="Logo/pt sunrise polosan.png" alt="Logo sunrise"></div>
+                        <div class="client-card" data-target="kia"><img src="Logo/logo_merah.webp" alt="Logo KIA"></div>
+                        <div class="client-card" data-target="kobin"><img src="Logo/logo-kobin.png" alt="Logo KIA"></div>
+                        <div class="client-card" data-target="mbokdarmi"><img src="Logo/logo-mbok-darmi1-3.png" alt="Logo KIA"></div>
+                        <div class="client-card" data-target="pegasus"><img src="Logo/logo.png" alt="Logo KIA"></div>
+
+                    </div>
+                </div>
+            </aside>
+
+              <!--  KOLOM KANAN: DETAIL KONTEN -->
+            <section class="solution-detail">
+                <!-- Konten Layanan: Otomatisasi (Aktif default) -->
+                <div id="otomatisasi" class="content-panel active">
+                    <h2>Otomatisasi Proses Produksi</h2>
+                    <p>Mengubah proses manual menjadi sistem cerdas yang terintegrasi penuh. Layanan Automation Engineering kami merancang dan mengimplementasikan solusi kontrol otomatis yang presisi, andal, dan dirancang untuk meningkatkan produktivitas serta mengurangi human error di lantai produksi Anda.</p>
+                    <h4>Cakupan Layanan</h4>
+                    <ul>
+                        <li>Desain dan pemrograman sistem kontrol berbasis PLC (Programmable Logic Controller).</li>
+                        <li>Pengembangan antarmuka HMI (Human-Machine Interface) & SCADA yang intuitif.</li>
+                        <li>Integrasi lengan robot (Robotic Arms) ke dalam lini produksi.k</li>
+                        <li>Perancangan dan instalasi panel kontrol industri.</li>
+                        <li>Sensorik dan aktuator untuk akuisisi data dan kontrol presisi.</li>
+                    </ul>
+                    <h4>Keunggulan Kami</h4>
+                    <p>Didukung oleh tim teknisi dengan pengalaman teruji sejak tahun 1996, kami memberikan solusi otomasi yang tidak hanya canggih, tetapi juga stabil dan terbukti di lapangan.</p>
+                </div>
+
+                <!-- Konten Layanan: Desain Mesin -->
+                <div id="desain" class="content-panel">
+                    <h2>Electrical Mechanical</h2>
+                    <p>Menjadi jantung dan urat nadi dari setiap mesin industri. Tim ahli kami yang terdiri dari teknisi elektrikal dan mekanik bersinergi untuk merancang, membangun, dan memelihara sistem elektromekanis yang aman, efisien, dan sesuai dengan standar industri tertinggi.</p>
+                    <h4>Cakupan Layanan</h4>
+                    <ul>
+                        <li>Perancangan dan perakitan panel distribusi listrik dan panel kontrol.</li>
+                        <li>Instalasi dan wiring (perkabelan) mesin industri secara presisi.</li>
+                        <li>Pembangun sistem konveyor, hidrolik dan pneumatik.</li>
+                        <li>Troubleshooting dan perbaikan sistem kelistrikan dan mekanik.</li>
+                        <li>Audit dan peningkatan keamanan kelistrikan mesin.</li>
+                    </ul>
+                    <h4>Keunggulan Kami</h4>
+                    <p> Pendekatan terintegrasi antara keahlian elektrikal dan mekanik memastikan tidak ada celah dalam desain, menghasilkan sistem yang solid dan andal dari awal hingga akhir.</p>
+                </div>
+
+                <!-- Konten Layanan: Integrasi Robotik -->
+                <div id="integrasi" class="content-panel">
+                    <h2>Custom Machine Building & Modification</h2>
+                    <p>Saat mesin standar tidak cukup, kami hadir dengan solusi yang dirancang khusus untuk Anda. Kami menyediakan layanan pembuatan mesin dari nol sesuai kebutuhan unik Anda, serta melakukan modifikasi dan retrofitting pada mesin lama untuk mencapai kinerja optimal dan efisiensi yang lebih tinggi.</p>
+                    <h4>Cakupan Layanan</h4>
+                    <ul>
+                        <li>Pembuatan Mesin Kustom: Dari tahap konsep, desain 3D, fabrikasi, hingga perakitan dan commissioning.</li>
+                        <li>Modifikasi & Retrofitting: Meningkatkan kapasitas, kecepatan, atau kemampuan mesin yang sudah ada dengan teknologi terbaru.</li>
+                        <li>Reparasi & Rekondisi: Mengembalikan mesin ke kondisi prima untuk memperpanjang masa pakainya.</li>
+                        <li>Troubleshooting dan perbaikan sistem kelistrikan dan mekanik.</li>
+                        <li>Audit dan peningkatan keamanan kelistrikan mesin.</li>
+                    </ul>
+                    <h4>Keunggulan Kami</h4>
+                    <p> Pendekatan terintegrasi antara keahlian elektrikal dan mekanik memastikan tidak ada celah dalam desain, menghasilkan sistem yang solid dan andal dari awal hingga akhir.</p>
+                </div>
+
+                <div id="pegasus" class="content-panel">
+                    <h2>Implementasi Sistem Robotik Canggih untuk PT Toyota</h2>
+                    <div class="project-gallery"><img src="Latar/WhatsApp Image 2025-08-21 at 15.59.39 (8).jpeg" alt="Foto Proyek Pegasus"></div>
+                    <h4>Tantangan</h4><p>PT Toyota membutuhkan peningkatan efisiensi pada lini perakitan pintu mobil...</p>
+                    <h4>Solusi Autotel</h4><p>Tim kami merancang dan mengintegrasikan 5 unit lengan robot KUKA...</p>
+                    <h4>Hasil</h4><p>Proyek ini berhasil meningkatkan output produksi sebesar 40%...</p>
+                </div>
+
+                <!-- Konten Portofolio: Yuasa -->
+                <div id="yuasa" class="content-panel">
+                    <h2>Otomatisasi Lini Pengisian Aki untuk PT Yuasa Battery</h2>
+                    <div class="project-gallery"><img src="Latar/WhatsApp Image 2025-08-21 at 15.59.46 (1).jpeg" alt="Foto Proyek Yuasa"></div>
+                    <h4>Tantangan</h4><p>Proses pengisian cairan elektrolit aki di PT Yuasa masih semi-otomatis...</p>
+                </div>
+                
+                <!-- Konten Portofolio Sunrise -->
+                <div id="sanrise" class="content-panel">
+                    <h2>Implementasi Sistem Robotik Canggih untuk PT Toyota</h2>
+                    <div class="project-gallery"><img src="Latar/WhatsApp Image 2025-08-21 at 15.59.37 (16).jpeg" alt="Foto Proyek Toyota"></div>
+                    <h4>Tantangan</h4><p>PT Toyota membutuhkan peningkatan efisiensi pada lini perakitan pintu mobil...</p>
+                    <h4>Solusi Autotel</h4><p>Tim kami merancang dan mengintegrasikan 5 unit lengan robot KUKA...</p>
+                    <h4>Hasil</h4><p>Proyek ini berhasil meningkatkan output produksi sebesar 40%...</p>
+                </div>
+
+                <!-- Konten Portofolio KIA -->
+                <div id="kia" class="content-panel">
+                    <h2>Implementasi Sistem Robotik Canggih untuk PT Toyota</h2>
+                    <div class="project-gallery"><img src="Latar/Listrik2.jpeg" alt="Foto Proyek Toyota"></div>
+                    <h4>Tantangan</h4><p>PT Toyota membutuhkan peningkatan efisiensi pada lini perakitan pintu mobil...</p>
+                    <h4>Solusi Autotel</h4><p>Tim kami merancang dan mengintegrasikan 5 unit lengan robot KUKA...</p>
+                    <h4>Hasil</h4><p>Proyek ini berhasil meningkatkan output produksi sebesar 40%...</p>
+                </div>
+
+                <!-- Konten Portofolio Kobin -->
+                <div id="kobin" class="content-panel">
+                    <h2>Implementasi Sistem Robotik Canggih untuk PT Toyota</h2>
+                    <div class="project-gallery"><img src="Latar/WhatsApp Image 2025-08-21 at 15.59.46.jpeg " alt="Foto Proyek Toyota"></div>
+                    <h4>Tantangan</h4><p>PT Toyota membutuhkan peningkatan efisiensi pada lini perakitan pintu mobil...</p>
+                    <h4>Solusi Autotel</h4><p>Tim kami merancang dan mengintegrasikan 5 unit lengan robot KUKA...</p>
+                    <h4>Hasil</h4><p>Proyek ini berhasil meningkatkan output produksi sebesar 40%...</p>
+                </div> 
+
+                <!-- Konten Portofolio toyota -->
+                 <div id="toyota" class="content-panel">
+                    <h2>Implementasi Sistem Robotik Canggih untuk PT Toyota</h2>
+                    <div class="project-gallery"><img src="Latar/WhatsApp Image 2025-08-21 at 15.59.44.jpeg" alt="Foto Proyek Toyota"></div>
+                    <h4>Tantangan</h4><p>PT Toyota membutuhkan peningkatan efisiensi pada lini perakitan pintu mobil...</p>
+                    <h4>Solusi Autotel</h4><p>Tim kami merancang dan mengintegrasikan 5 unit lengan robot KUKA...</p>
+                    <h4>Hasil</h4><p>Proyek ini berhasil meningkatkan output produksi sebesar 40%...</p>
+                </div> 
+
+
+                  <div id="mulia" class="content-panel">
+                    <h2>Implementasi Sistem Robotik Canggih untuk PT Toyota</h2>
+                    <div class="project-gallery"><img src="Latar/WhatsApp Image 2025-08-21 at 15.59.42 (5).jpeg" alt="Foto Proyek Toyota"></div>
+                    <h4>Tantangan</h4><p>PT Toyota membutuhkan peningkatan efisiensi pada lini perakitan pintu mobil...</p>
+                    <h4>Solusi Autotel</h4><p>Tim kami merancang dan mengintegrasikan 5 unit lengan robot KUKA...</p>
+                    <h4>Hasil</h4><p>Proyek ini berhasil meningkatkan output produksi sebesar 40%...</p>
+                </div> 
+
+                <div id="mbokdarmi" class="content-panel">
+                    <h2>Implementasi Sistem Robotik Canggih untuk PT Toyota</h2>
+                    <div class="project-gallery"><img src="Latar/IMG_7967.jpg" alt="Foto Proyek Toyota"></div>
+                    <h4>Tantangan</h4><p>PT Toyota membutuhkan peningkatan efisiensi pada lini perakitan pintu mobil...</p>
+                    <h4>Solusi Autotel</h4><p>Tim kami merancang dan mengintegrasikan 5 unit lengan robot KUKA...</p>
+                    <h4>Hasil</h4><p>Proyek ini berhasil meningkatkan output produksi sebesar 40%...</p>
+                </div> 
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links"><a href="kontak.html">CONTACT US</a><a href="#">PARTNERS</a><a href="#">PRIVACY POLICY</a></div>
+            <div class="footer-copyright"><p>© 2025 AUTOTEL CIPTA SOLUSI</p></div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT UNTUK INTERAKTIVITAS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-item, .client-card');
+            const contentPanels = document.querySelectorAll('.content-panel');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    contentPanels.forEach(p => p.classList.remove('active'));
+
+                    this.classList.add('active');
+                    
+                    const targetId = this.dataset.target;
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

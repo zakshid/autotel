@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Autotel Cipta Solusi</title>
+    
+    <!-- CSS untuk Halaman Blog -->
+    <style>
+        :root {
+            --primary-color: #0D47A1;
+            --secondary-color: #1976D2;
+            --dark-grey: #333333;
+            --light-grey: #f8f9fa;
+            --white-color: #ffffff;
+            --border-color: #e9ecef;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background-color: var(--white-color);
+        }
+        a { text-decoration: none; color: var(--primary-color); }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Header (Sama seperti halaman lain) */
+        header { background: var(--white-color); padding: 1rem 5%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        nav .logo a { color: var(--primary-color); font-size: 1.5rem; font-weight: bold; text-decoration: none; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 2rem; }
+        nav ul li a { text-decoration: none; color: var(--dark-grey); font-weight: 600; transition: color 0.3s ease; }
+        nav ul li a:hover { color: var(--primary-color); }
+
+        /* Page Header */
+        .page-header { background-color: var(--primary-color); color: var(--white-color); padding: 3rem 5%; text-align: center; }
+        .page-header h1 { font-size: 2.8rem; }
+
+        /* Layout Utama Blog (Single Page Scroll) */
+        .blog-list {
+            padding: 3rem 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .blog-post {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4rem;
+        }
+
+        /* Layout bergantian (gambar kanan, lalu gambar kiri) */
+        .blog-post:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .post-image {
+            flex: 0 0 45%;
+        }
+        .post-image img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+
+        .post-content {
+            flex: 1;
+        }
+
+        .post-content .post-category {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .post-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-content .post-meta {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .post-content p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more-btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            background-color: #09316e;
+        }
+
+        /* Footer (Sama seperti halaman lain) */
+        footer { background-color: var(--light-grey); padding: 3rem 5%; border-top: 1px solid #e0e0e0; margin-top: 2rem; text-align: center; }
+        .footer-links { margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; }
+        .footer-links a, .footer-copyright p { text-decoration: none; color: #555; font-weight: 600; font-size: 0.9rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--primary-color); }
+
+        /* Efek Transisi Scroll */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-post, .blog-post:nth-child(even) {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .post-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html"><b>AUTOTEL</b></a></div>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                <li><a href="layanan.html">Layanan</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <!-- <li><a href="kontak.html">Kontak</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="page-header">
+            <h1>Insight & Berita Industri</h1>
+        </div>
+
+        <div class="blog-list">
+            <!-- Artikel 1 -->
+            <section class="blog-post reveal">
+                <div class="post-image">
+                    <img src="Latar/big industrial factory factory industrial industry png.jpg" alt="Gambar Artikel 1">
+                </div>
+                <div class="post-content">
+                    <span class="post-category">TEKNOLOGI</span>
+                    <h2>5 Tanda Pabrik Anda Siap untuk Otomasi Penuh</h2>
+                    <div class="post-meta">Oleh Tim Autotel | 27 Agustus 2025</div>
+                    <p>Otomatisasi bukan lagi pilihan, melainkan keharusan untuk tetap kompetitif. Kenali tanda-tanda kunci bahwa fasilitas produksi Anda siap untuk mengambil langkah besar berikutnya...</p>
+                    <a href="artikel-detail.html" class="read-more-btn">Baca Selengkapnya</a>
+                </div>
+            </section>
+
+            <!-- Artikel 2 -->
+            <section class="blog-post reveal">
+                <div class="post-image">
+                    <img src="https://placehold.co/600x400/1976D2/FFFFFF?text=ROI" alt="Gambar Artikel 2">
+                </div>
+                <div class="post-content">
+                    <span class="post-category">STUDI KASUS</span>
+                    <h2>Cara Menghitung ROI Investasi Mesin Otomatis</h2>
+                    <div class="post-meta">25 Agustus 2025</div>
+                    <p>Memahami bagaimana investasi pada teknologi baru akan memberikan keuntungan finansial adalah kunci untuk mendapatkan persetujuan dari manajemen. Kami membagikan formula sederhananya...</p>
+                    <a href="#" class="read-more-btn">Baca Selengkapnya</a>
+                </div>
+            </section>
+            
+            <!-- Artikel 3 -->
+            <section class="blog-post reveal">
+                <div class="post-image">
+                    <img src="https://placehold.co/600x400/42A5F5/FFFFFF?text=Industri+4.0" alt="Gambar Artikel 3">
+                </div>
+                <div class="post-content">
+                    <span class="post-category">BERITA INDUSTRI</span>
+                    <h2>Peran Robot Kolaboratif dalam Industri 4.0</h2>
+                    <div class="post-meta">22 Agustus 2025</div>
+                    <p>Cobots (Collaborative Robots) mengubah cara manusia dan mesin bekerja sama di lantai produksi. Mereka lebih aman, fleksibel, dan lebih mudah diprogram dari robot industri tradisional...</p>
+                    <a href="#" class="read-more-btn">Baca Selengkapnya</a>
+                </div>
+            </section>
+            <!-- Tambahkan artikel lain di sini dengan format yang sama -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links"><a href="#">CONTACT US</a><a href="#">PARTNERS</a><a href="#">PRIVACY POLICY</a></div>
+            <div class="footer-copyright"><p>© 2025 AUTOTEL CIPTA SOLUSI</p></div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT UNTUK TRANSISI SCROLL -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Panggil sekali saat halaman dimuat
+        reveal();
+    </script>
+
+</body>
+</html>
+

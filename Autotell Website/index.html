@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autotel Cipta Solusi - Otomatisasi Industri & Desain Mesin Kustom</title>
+    
+    <!-- ======================= SEMUA CSS DITEMPEL DI SINI ======================= -->
+    <style>
+        /* Pengaturan Global & Variable Warna */
+        :root {
+            --primary-color: #0D47A1;
+            --secondary-color: #1976D2;
+            --accent-color: #42A5F5;
+            --dark-grey: #333333;
+            --light-grey: #f8f9fa;
+            --white-color: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background-color: var(--white-color);
+        }
+
+        /* Header & Hero */
+        .hero-container {
+            height: 90vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Latar/dbf8915d303eba08f91a26ddf8cf79d1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            color: var(--white-color);
+        }
+        header {
+            background: transparent;
+            padding: 1.5rem 5%;
+            width: 100%;
+            z-index: 100;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        nav .logo a { color: var(--white-color); font-size: 1.5rem; font-weight: bold; text-decoration: none; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 2rem; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: var(--white-color);
+            font-weight: 600; 
+            transition: color 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        nav ul li a:hover { color: var(--accent-color); }
+        #hero {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+        #hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        #hero p { font-size: 1.2rem; max-width: 800px; margin-bottom: 2rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .cta-button { background-color: var(--accent-color); color: var(--white-color); padding: 1rem 2rem; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease; }
+        .cta-button:hover { background-color: var(--secondary-color); }
+        
+        /* Section Umum */
+        section { padding: 5rem 5%; text-align: center; }
+        section h2 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary-color); }
+
+        /* Bagian Layanan */
+        #layanan-utama { 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Latar/struktur\ Listrik.jpeg');
+            padding: 6rem 5%;
+        }
+        .layanan-container-baru {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .layanan-kartu-baru {
+            background-color: var(--white-color);
+            border-radius: 8px;
+            padding: 0;
+            flex-basis: 30%;
+            max-width: 350px;
+            text-align: left;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+        .layanan-kartu-baru:hover { transform: translateY(-10px); }
+        .layanan-kartu-gambar {
+            height: 200px;
+            width: 100%;
+            object-fit: cover
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))
+            ;
+        }
+        .layanan-kartu-konten {
+            padding: 2rem;
+        }
+        .layanan-nomor { font-size: 1rem; font-weight: 700; color: #999; margin-bottom: 1rem; }
+        .layanan-kartu-baru h3 { font-size: 2rem; color: var(--dark-grey); margin-bottom: 1rem; }
+        .layanan-kartu-baru p { font-size: 1rem; color: #666; line-height: 1.7; }
+
+        /* Bagian Klien & Partner */
+        #trust-section {
+            background-color: var(--white-color);
+            padding-bottom: 0;
+        }
+        .trust-group {
+            margin-top: 4rem;
+        }
+        .trust-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-grey);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        .trust-title::before, .trust-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 1px;
+            background-color: #b5afaf;
+        }
+        .trust-title::before {
+            right: 100%;
+            margin-right: 1.5rem;
+        }
+        .trust-title::after {
+            left: 100%;
+            margin-left: 1.5rem;
+        }
+        .logo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem 4rem;
+        }
+        .logo-item {
+            max-height: 45px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .logo-item:hover {
+            opacity: 1;
+        }
+        .partner-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+        }
+        .partner-item img {
+            max-height: 50px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .partner-item img:hover {
+            opacity: 1;
+        }
+
+        /* CSS Untuk Transisi Scroll */
+        .reveal { position: relative; opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Footer */
+footer {
+    background-color: var(--light-grey);
+    padding: 3rem 5%;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 5rem;
+    text-align: center; /* Membuat semua konten di dalamnya jadi ke tengah */
+}
+.footer-links {
+    margin-bottom: 1.5rem; /* Memberi jarak antara baris link dan copyright */
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.footer-links a, .footer-copyright p {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .layanan-container-baru {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            #hero h1 { font-size: 2.2rem; }
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================= STRUKTUR HTML DIPERBAIKI ======================= -->
+    <div class="hero-container">
+        <header>
+            <nav>
+                <div class="logo"><a href="index.html"><b>AUTOTEL</b></a></div>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                    <li><a href="layanan.html">Layanan</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <!-- <li><a href="kontak.html">Kontak</a></li> -->
+                </ul>
+            </nav>
+        </header>
+        
+        <section id="hero">
+            <h1>Tingkatkan Efisiensi Produksi dengan Otomasi Cerdas</h1>
+            <p>Kami membantu perusahaan manufaktur mengatasi bottleneck, mengurangi biaya operasional, dan meningkatkan akurasi melalui solusi mesin otomatis yang dirancang khusus untuk kebutuhan Anda.</p>
+            <a href="#kontak" class="cta-button">Diskusikan Kebutuhan Otomasi Anda</a>
+        </section>
+    </div>
+
+    <main>
+        <!-- Bagian Layanan (Struktur HTML Tetap Sama) -->
+        <section id="layanan-utama" class="reveal">
+            <div class="layanan-container-baru">
+                <a href="layanan.html" class="layanan-kartu-baru" style="text-decoration: none; color: inherit;">
+                    <img src="Latar/Maximizing Business Efficiency_ The Power of Automation in Every Department.jpg" alt="Foto Otomatisasi" class="layanan-kartu-gambar">
+                    <div class="layanan-kartu-konten">
+                        <div class="layanan-nomor">01</div>
+                        <h3>Automation Engineering</h3>
+                        <p>Pembuatan Sistem Automatioin pada sistem yang terkontrol dan terintegrasi oleh sistem. Didukung oleh teknisi berpengalaman sejak tahun 1996</p>
+                    </div>
+                </a>
+                <a href="layanan.html" class="layanan-kartu-baru" style="text-decoration: none; color: inherit;">
+                    <img src="Latar/Listrik2.jpeg" alt="Foto Desain Mesin" class="layanan-kartu-gambar">
+                    <div class="layanan-kartu-konten">
+                        <div class="layanan-nomor">02</div>
+                        <h3>Electrical Mechanical</h3>
+                        <p>Tim ahli yang terdiri dari Teknisi Kelistrikan dan Mekanik bekerja sama untuk mendesain dan membangun sistem kelistrikan yang anda inginkan</p>
+                    </div>
+                </a>
+                <a href="layanan.html" class="layanan-kartu-baru" style="text-decoration: none; color: inherit;">
+                    <img src="Latar/Mesin.jpeg" alt="Foto Integrasi" class="layanan-kartu-gambar">
+                    <div class="layanan-kartu-konten">
+                        <div class="layanan-nomor">03</div>
+                        <h3>Building or Modified Machine</h3>
+                        <p>Pembuatan dan instalasi mesin sesuai keinginan dan reparasi ulang mesin agar mendapatkan kinerja optimal, dapat membuat sistem produksi anda semakin efisien</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- STRUKTUR HTML UNTUK KLIEN & PARTNER -->
+        <section id="trust-section" class="reveal">
+            <!-- Grup Klien -->
+            <div class="trust-group">   
+                <h3 class="trust-title">Klien Kami</h3>
+                <div class="logo-grid">
+                    <img class="logo-item" src="Logo/WJ24JG5LX4US27ZN4W4VHEY3TN35NHPG5R7ZT8ZN-5db2a5f8.png" alt="Logo Toyota Indonesia">
+                    <img class="logo-item" src="Logo/pt_yuasa_industrial_battery_indonesia_logo.jpeg" alt="Logo Yuasa Battery">
+                    <img class="logo-item" src="Logo/logo-new.png" alt="Logo Mulia Ceramics">
+                    <img class="logo-item" src="Logo/pt_sunrise_bumi_a237efbf96.webp" alt="Logo Aditya Birla">
+                    <img class="logo-item" src="Logo/logo_merah.webp" alt="Logo KIA">
+                    <img class="logo-item" src="Logo/logo-kobin.png" alt="Logo Kobin">
+                    <img class="logo-item" src="Logo/logo-mbok-darmi1-3.png" alt="Logo logo-mbok-darmi1-3">
+                    <img class="logo-item" src="Logo/logo.png       " alt="Logo logo-mbok-darmi1-3">
+
+                </div>
+            </div>
+            <!-- Grup Partner -->
+            <div class="trust-group">
+                <h3 class="trust-title">Partner Teknologi Kami</h3>
+                <div class="partner-grid">
+                    <div class="partner-item"><img src="Logo/motive.png" alt="Logo Partner 1"></div>
+                    <div class="partner-item"><img src="Logo/welth.png" alt="Logo Partner 2"></div>
+                    <div class="partner-item"><img src="Logo/Spimphoneix.png" alt="Logo Partner 3"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Struktur HTML Tetap Sama) -->
+    <footer class="reveal">
+    <div class="footer-content" id="kontak">
+        <div class="footer-links">
+            <a href="tentang-kami.html#kontak">CONTACT US</a>
+            <a href="#">PARTNERS</a>
+            <a href="#">PRIVACY POLICY</a>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2025 AUTOTEL CIPTA SOLUSI</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- JAVASCRIPT UNTUK TRANSISI SCROLL -->
+    <script>
+        function revealOnScroll() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+    </script>
+
+</body>
+</html>
