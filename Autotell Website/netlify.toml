@@ -1,2 +1,31 @@
 [build]
   publish = "."
+[[redirects]]
+  from = "/layanan"
+  to = "/layanan.html"
+  status = 200
+
+[[redirects]]
+  from = "/kontak"
+  to = "/kontak.html"
+  status = 200
+
+[[redirects]]
+  from = "/tentang-kami"
+  to = "/tentang-kami.html"
+  status = 200
+
+[[redirects]]
+  from = "/studi-kasus"
+  to = "/studi-kasus.html"
+  status = 200
+
+[[redirects]]
+  from = "/artikel-detail"
+  to = "/artikel-detail.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
